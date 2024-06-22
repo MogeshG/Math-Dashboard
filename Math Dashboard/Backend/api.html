@@ -1,0 +1,1905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Source for Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        const domain = 'http://localhost:3001/api';
+        
+        const getUsers = async(event) => {
+            event.preventDefault();
+            try {
+                const response = await fetch(`${domain}/users`, {
+                    method: 'GET',
+                    headers: {
+                        "Content-Type" : 'application/json'
+                    }
+                });
+                const result = await response.json();
+                console.log('Success: ', result);
+            } catch(error) {
+                console.log('Error: ', error);
+            }
+        }
+        
+        const getTopics = async(event) => {
+            event.preventDefault();
+            try {
+                const response = await fetch(`${domain}/topics`, {
+                    method: 'GET',
+                    headers: {
+                        "Content-Type" : 'application/json'
+                    }
+                });
+                const result = await response.json();
+                console.log('Success: ', result);
+            } catch(error) {
+                console.log('Error: ', error);
+            }
+        }
+        
+        const getSubTopics = async(event) => {
+            event.preventDefault();
+            try {
+                const response = await fetch(`${domain}/subtopics`, {
+                    method: 'GET',
+                    headers: {
+                        "Content-Type" : 'application/json'
+                    }
+                });
+                const result = await response.json();
+                console.log('Success: ', result);
+            } catch(error) {
+                console.log('Error: ', error);
+            }
+        }
+        
+        const getQuestions = async(event) => {
+            event.preventDefault();
+            try {
+                const response = await fetch(`${domain}/questions`, {
+                    method: 'GET',
+                    headers: {
+                        "Content-Type" : 'application/json'
+                    }
+                });
+                const result = await response.json();
+                console.log('Success: ', result);
+            } catch(error) {
+                console.log('Error: ', error);
+            }
+        }
+
+        const getReports= async(event) => {
+            event.preventDefault();
+            try {
+                const response = await fetch(`${domain}/reports`, {
+                    method: 'GET',
+                    headers: {
+                        "Content-Type" : 'application/json'
+                    }
+                });
+                const result = await response.json();
+                console.log('Success: ', result);
+            } catch(error) {
+                console.log('Error: ', error);
+            }
+        }
+
+        const getTopicReports = async(event) => {
+            event.preventDefault();
+            try {
+                const response = await fetch(`${domain}/topicreports`, {
+                    method: 'GET',
+                    headers: {
+                        "Content-Type" : 'application/json'
+                    }
+                });
+                const result = await response.json();
+                console.log('Success: ', result);
+            } catch(error) {
+                console.log('Error: ', error);
+            }
+        }
+
+        const getCustomerWithEmail = async (event) => {
+            event.preventDefault();
+
+            const email = document.getElementById('user-email').value;
+
+            try {
+                const response = await fetch(`${domain}/customeremail`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ email: email }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const result = await response.json();
+                console.log('Success:', result);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        
+        const getCustomerWithId = async (event) => {
+            event.preventDefault();
+
+            const id = document.getElementById('user-id').value;
+
+            try {
+                const response = await fetch(`${domain}/customerid`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ id: id }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const result = await response.json();
+                console.log('Success:', result);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        
+        const getCustomerWithName = async (event) => {
+            event.preventDefault();
+
+            const name = document.getElementById('user-name').value;
+
+            try {
+                const response = await fetch(`${domain}/customername`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ name: name }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const result = await response.json();
+                console.log('Success:', result);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        
+        const getTopicById= async (event) => {
+            event.preventDefault();
+
+            const id = document.getElementById('topic-id').value;
+
+            try {
+                const response = await fetch(`${domain}/topicid`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ id: id }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const result = await response.json();
+                console.log('Success:', result);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        
+        const getTopicByName = async (event) => {
+            event.preventDefault();
+
+            const name = document.getElementById('topic-name').value;
+
+            try {
+                const response = await fetch(`${domain}/topicname`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ name: name }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const result = await response.json();
+                console.log('Success:', result);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        
+        const getTopicByGrade = async (event) => {
+            event.preventDefault();
+
+            const grade = document.getElementById('topic-grade').value;
+
+            try {
+                const response = await fetch(`${domain}/topicgrade`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ grade: grade }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const result = await response.json();
+                console.log('Success:', result);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        
+        const getSubTopicById= async (event) => {
+            event.preventDefault();
+
+            const id = document.getElementById('subtopic-id').value;
+
+            try {
+                const response = await fetch(`${domain}/subtopicid`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ id: id }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const result = await response.json();
+                console.log('Success:', result);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        
+        const getSubTopicByName = async (event) => {
+            event.preventDefault();
+
+            const name = document.getElementById('subtopic-name').value;
+
+            try {
+                const response = await fetch(`${domain}/subtopicname`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ name: name }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const result = await response.json();
+                console.log('Success:', result);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        
+        const getSubTopicByGrade = async (event) => {
+            event.preventDefault();
+
+            const grade = document.getElementById('subtopic-grade').value;
+
+            try {
+                const response = await fetch(`${domain}/subtopicgrade`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ grade: grade }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const result = await response.json();
+                console.log('Success:', result);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        
+        const getQuestionById= async (event) => {
+            event.preventDefault();
+
+            const id = document.getElementById('question-id').value;
+
+            try {
+                const response = await fetch(`${domain}/questionid`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ id: id }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const result = await response.json();
+                console.log('Success:', result);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        
+        const getQuestionByTitle = async (event) => {
+            event.preventDefault();
+
+            const title = document.getElementById('question-title').value;
+
+            try {
+                const response = await fetch(`${domain}/questiontitle`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ title: title }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const result = await response.json();
+                console.log('Success:', result);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        
+        const getReportById= async (event) => {
+            event.preventDefault();
+
+            const id = document.getElementById('report-id').value;
+
+            try {
+                const response = await fetch(`${domain}/reportid`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ id: id }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const result = await response.json();
+                console.log('Success:', result);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        
+        const getTopicReportById= async (event) => {
+            event.preventDefault();
+
+            const id = document.getElementById('topicreport-id').value;
+
+            try {
+                const response = await fetch(`${domain}/topicreport/userid`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ id: id }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const result = await response.json();
+                console.log('Success:', result);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        
+        const getTopicReportByIdAndTopic= async (event) => {
+            event.preventDefault();
+
+            const userid = document.getElementById('report-userid').value;
+            const topicid = document.getElementById('report-topicid').value;
+
+            try {
+                const response = await fetch(`${domain}/report/userid/topicid`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ userid: userid, topicid: topicid  }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const result = await response.json();
+                console.log('Success:', result);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        
+        const addUser = async (event) => {
+            event.preventDefault();
+
+            const name = document.getElementById('adduser-name').value;
+            const age = document.getElementById('adduser-age').value;
+            const email = document.getElementById('adduser-email').value;
+            const password = document.getElementById('adduser-password').value;
+
+            try {
+                const response = await fetch(`${domain}/adduser`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                         name: name,
+                         age: age,
+                         email: email,
+                         password: password 
+                    }),
+                });
+
+                const result = await response.json();
+                if(result.data === 'success') {
+                    console.log('Success:', result);
+                } else {
+                    throw result;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }   
+        }
+        
+        const editUser = async (event) => {
+            event.preventDefault();
+
+            const id = document.getElementById('edituser-id').value;
+            const name = document.getElementById('edituser-name').value;
+            const age = document.getElementById('edituser-age').value;
+            const email = document.getElementById('edituser-email').value;
+            const password = document.getElementById('edituser-password').value;
+
+            try {
+                const response = await fetch(`${domain}/edituser`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        id: id,
+                        name: name,
+                        age: age,
+                        email: email,
+                        password: password 
+                    }),
+                });
+                const result = await response.json();
+                if(result.data === 'success') {
+                    console.log('Success: ', result);
+                } else {
+                    throw result;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }   
+        }
+    
+        const deleteUser = async (event) => {
+            event.preventDefault();
+
+            const id = document.getElementById('delete-user').value;
+
+            try {
+                const response = await fetch(`${domain}/deleteuser`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ id: id }),
+                });
+
+                const result = await response.json();
+                if(result.data === 'success') {
+                    console.log('Success:', result);
+                } else {
+                    throw result;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        
+        const resetreport= async (event) => {
+            event.preventDefault();
+
+            const id = document.getElementById('reset-report').value;
+
+            try {
+                const response = await fetch(`${domain}/resetreport`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ id: id }),
+                });
+
+                const result = await response.json();
+                if(result.data === 'success') {
+                    console.log('Success:', result);
+                } else {
+                    throw result;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        
+        const login = async (event) => {
+            event.preventDefault();
+
+            const email = document.getElementById('login-email').value;
+            const password= document.getElementById('login-password').value;
+            console.log(email, password)
+            try {
+                const response = await fetch(`${domain}/login`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ email: email, password: password }),
+                });
+
+                // if (!response.ok) {
+                //     throw new Error('Network response was not ok');
+                // }
+                const result = await response.json();
+                if(result.message === 'Login Successful')
+                    console.log('Success:', result);
+                else 
+                    throw result;
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };    
+
+    </script>
+</head>
+<body>
+    <form method="GET" onsubmit="getUsers(event)" class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">1. All Users</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label><a href="http://localhost:3001/api/users">http://localhost:3001/api/users</a></label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-green-700">GET</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="description">Description</label>
+                    <label>Getting all the users from the users table</label>
+                </div>
+            </div>
+        </div>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-green-400 " type="submit">GET</button>
+        </div>
+    </form>
+    <form method="GET" onsubmit="getTopics(event)" class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">2. Topics</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label><a href="http://localhost:3001/api/topics">http://localhost:3001/api/topics</a></label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-green-700">GET</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="description">Description</label>
+                    <label>Getting all the topics from the topics table</label>
+                </div>
+            </div>
+        </div>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-green-400 " type="submit">GET</button>
+        </div>
+    </form>
+    <form method="GET" onsubmit="getSubTopics(event)" class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">3. Sub Topics</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label><a href="http://localhost:3001/api/subtopics">http://localhost:3001/api/subtopics</a></label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-green-700">GET</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="description">Description</label>
+                    <label>Getting all the sub topics from the sub topics table</label>
+                </div>
+            </div>
+        </div>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-green-400 " type="submit">GET</button>
+        </div>
+    </form>
+    <form method="GET" onsubmit="getQuestions(event)" class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">4. Questions</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label><a href="http://localhost:3001/api/questions">http://localhost:3001/api/questions</a></label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-green-700">GET</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="description">Description</label>
+                    <label>Getting all the questions from the questions table</label>
+                </div>
+            </div>
+        </div>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-green-400 " type="submit">GET</button>
+        </div>
+    </form>
+    <form method="GET" onsubmit="getReports(event)" class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">5. Reports</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label><a href="http://localhost:3001/api/reports">http://localhost:3001/api/reports</a></label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-green-700">GET</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="description">Description</label>
+                    <label>Getting all the reports from the reports table</label>
+                </div>
+            </div>
+        </div>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-green-400 " type="submit">GET</button>
+        </div>
+    </form>
+    <form method="GET" onsubmit="getTopicReports(event)" class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">6. Topic Wise Reports</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label><a href="http://localhost:3001/api/topicreports">http://localhost:3001/api/topicreports</a></label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-green-700">GET</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="description">Description</label>
+                    <label>Getting all the Topic wise reports from the topic_reports table. A single user can have more topic reports on different topics</label>
+                </div>
+            </div>
+        </div>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-green-400 " type="submit">GET</button>
+        </div>
+    </form>
+
+    <form method="POST" onsubmit="getCustomerWithEmail(event)" class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">7. Customer data with Email</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label>http://localhost:3001/api/customeremail</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-red-700">POST</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+            </div>
+        </div>
+        <table class="w-100 border m-1">
+            <thead class="text-center uppercase bg-black text-white">
+                <tr class="border-b">
+                    <th class="p-1 border-r border-white">Label</th>
+                    <th class="p-1 border-r border-white">Value</th>
+                    <th class="p-1 border-r border-white">Variable Name</th>
+                    <th class="p-1 border-r border-white">Mandatory</th>
+                    <th class="p-1 border-r border-white">Table</th>
+                    <th class="p-1 border-r border-white">Note</th>
+                    <th class="p-1 border-r border-black">Sample</th>
+                </tr>
+            </thead>
+            <tbody class=" text-center">
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">Email</td>
+                    <td class="p-1 border-r"><input id="user-email" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">email</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">customers</td>
+                    <td class="p-1 border-r max-w-40 break-words">Get data of the customer with their email</td>
+                    <td class="p-1 border-r">user2@gmail.com</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-red-400 " type="submit">POST</button>
+        </div>
+    </form>
+    <form method="POST" onsubmit="getCustomerWithId(event)" class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">8. Customer data with Id</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label>http://localhost:3001/api/customerid</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-red-700">POST</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+            </div>
+        </div>
+        <table class="w-100 border m-1">
+            <thead class="text-center uppercase bg-black text-white">
+                <tr class="border-b">
+                    <th class="p-1 border-r border-white">Label</th>
+                    <th class="p-1 border-r border-white">Value</th>
+                    <th class="p-1 border-r border-white">Variable Name</th>
+                    <th class="p-1 border-r border-white">Mandatory</th>
+                    <th class="p-1 border-r border-white">Table</th>
+                    <th class="p-1 border-r border-white">Note</th>
+                    <th class="p-1 border-r border-black">Sample</th>
+                </tr>
+            </thead>
+            <tbody class=" text-center">
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">User Id</td>
+                    <td class="p-1 border-r"><input id="user-id" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">id</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">customers</td>
+                    <td class="p-1 border-r max-w-40 break-words">Get data of the customer with their id</td>
+                    <td class="p-1 border-r">id</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-red-400 " type="submit">POST</button>
+        </div>
+    </form>
+    <form method="POST" onsubmit="getCustomerWithName(event)" class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">9. Customer data with Name</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label>http://localhost:3001/api/customername</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-red-700">POST</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+            </div>
+        </div>
+        <table class="w-100 border m-1">
+            <thead class="text-center uppercase bg-black text-white">
+                <tr class="border-b">
+                    <th class="p-1 border-r border-white">Label</th>
+                    <th class="p-1 border-r border-white">Value</th>
+                    <th class="p-1 border-r border-white">Variable Name</th>
+                    <th class="p-1 border-r border-white">Mandatory</th>
+                    <th class="p-1 border-r border-white">Table</th>
+                    <th class="p-1 border-r border-white">Note</th>
+                    <th class="p-1 border-r border-black">Sample</th>
+                </tr>
+            </thead>
+            <tbody class=" text-center">
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">User Name</td>
+                    <td class="p-1 border-r"><input id="user-name" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">name</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">customers</td>
+                    <td class="p-1 border-r max-w-40 break-words">Get data of the customer with their name. Name is not unique</td>
+                    <td class="p-1 border-r">id</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-red-400 " type="submit">POST</button>
+        </div>
+    </form>
+
+    <form method="POST" onsubmit="getTopicById(event)"  class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">10. Topic by Id</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label>http://localhost:3001/api/topicid</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-red-700">POST</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+            </div>
+        </div>
+        <table class="w-100 border m-1">
+            <thead class="text-center uppercase bg-black text-white">
+                <tr class="border-b">
+                    <th class="p-1 border-r border-white">Label</th>
+                    <th class="p-1 border-r border-white">Value</th>
+                    <th class="p-1 border-r border-white">Variable Name</th>
+                    <th class="p-1 border-r border-white">Mandatory</th>
+                    <th class="p-1 border-r border-white">Table</th>
+                    <th class="p-1 border-r border-white">Note</th>
+                    <th class="p-1 border-r border-black">Sample</th>
+                </tr>
+            </thead>
+            <tbody class=" text-center">
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">Id</td>
+                    <td class="p-1 border-r"><input id="topic-id" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">id</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">topics</td>
+                    <td class="p-1 border-r max-w-40 break-words">Topic id is unique</td>
+                    <td class="p-1 border-r">31</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-red-400 " type="submit">POST</button>
+        </div>
+    </form>
+    <form method="POST" onsubmit="getTopicByName(event)"  class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">11. Topic by Name</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label>http://localhost:3001/api/topicname</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-red-700">POST</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+            </div>
+        </div>
+        <table class="w-100 border m-1">
+            <thead class="text-center uppercase bg-black text-white">
+                <tr class="border-b">
+                    <th class="p-1 border-r border-white">Label</th>
+                    <th class="p-1 border-r border-white">Value</th>
+                    <th class="p-1 border-r border-white">Variable Name</th>
+                    <th class="p-1 border-r border-white">Mandatory</th>
+                    <th class="p-1 border-r border-white">Table</th>
+                    <th class="p-1 border-r border-white">Note</th>
+                    <th class="p-1 border-r border-black">Sample</th>
+                </tr>
+            </thead>
+            <tbody class=" text-center">
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">Name</td>
+                    <td class="p-1 border-r"><input id="topic-name" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">name</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">topics</td>
+                    <td class="p-1 border-r max-w-40 break-words">Topic name is not unique</td>
+                    <td class="p-1 border-r">addition</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-red-400 " type="submit">POST</button>
+        </div>
+    </form>
+    <form method="POST" onsubmit="getTopicByGrade(event)"  class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">12. Topic by Grade</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label>http://localhost:3001/api/topicgrade</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-red-700">POST</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+            </div>
+        </div>
+        <table class="w-100 border m-1">
+            <thead class="text-center uppercase bg-black text-white">
+                <tr class="border-b">
+                    <th class="p-1 border-r border-white">Label</th>
+                    <th class="p-1 border-r border-white">Value</th>
+                    <th class="p-1 border-r border-white">Variable Name</th>
+                    <th class="p-1 border-r border-white">Mandatory</th>
+                    <th class="p-1 border-r border-white">Table</th>
+                    <th class="p-1 border-r border-white">Note</th>
+                    <th class="p-1 border-r border-black">Sample</th>
+                </tr>
+            </thead>
+            <tbody class=" text-center">
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">Grade</td>
+                    <td class="p-1 border-r"><input id="topic-grade" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">grade</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">topics</td>
+                    <td class="p-1 border-r max-w-40 break-words">A grade can have multiple topics {kindergarden, 1 to 8}</td>
+                    <td class="p-1 border-r">1</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-red-400 " type="submit">POST</button>
+        </div>
+    </form>
+
+    <form method="POST" onsubmit="getSubTopicById(event)"  class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">13. Sub Topic by Id</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label>http://localhost:3001/api/subtopicid</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-red-700">POST</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+            </div>
+        </div>
+        <table class="w-100 border m-1">
+            <thead class="text-center uppercase bg-black text-white">
+                <tr class="border-b">
+                    <th class="p-1 border-r border-white">Label</th>
+                    <th class="p-1 border-r border-white">Value</th>
+                    <th class="p-1 border-r border-white">Variable Name</th>
+                    <th class="p-1 border-r border-white">Mandatory</th>
+                    <th class="p-1 border-r border-white">Table</th>
+                    <th class="p-1 border-r border-white">Note</th>
+                    <th class="p-1 border-r border-black">Sample</th>
+                </tr>
+            </thead>
+            <tbody class=" text-center">
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">Id</td>
+                    <td class="p-1 border-r"><input id="subtopic-id" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">id</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">subtopics</td>
+                    <td class="p-1 border-r max-w-40 break-words">Sub Topic id is unique</td>
+                    <td class="p-1 border-r">2</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-red-400 " type="submit">POST</button>
+        </div>
+    </form>
+    <form method="POST" onsubmit="getSubTopicByName(event)"  class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">14. Sub Topic by Name</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label>http://localhost:3001/api/subtopicname</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-red-700">POST</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+            </div>
+        </div>
+        <table class="w-100 border m-1">
+            <thead class="text-center uppercase bg-black text-white">
+                <tr class="border-b">
+                    <th class="p-1 border-r border-white">Label</th>
+                    <th class="p-1 border-r border-white">Value</th>
+                    <th class="p-1 border-r border-white">Variable Name</th>
+                    <th class="p-1 border-r border-white">Mandatory</th>
+                    <th class="p-1 border-r border-white">Table</th>
+                    <th class="p-1 border-r border-white">Note</th>
+                    <th class="p-1 border-r border-black">Sample</th>
+                </tr>
+            </thead>
+            <tbody class=" text-center">
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">Name</td>
+                    <td class="p-1 border-r"><input id="subtopic-name" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">name</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">subtopics</td>
+                    <td class="p-1 border-r max-w-40 break-words">Sub Topic name is not unique</td>
+                    <td class="p-1 border-r">line addition</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-red-400 " type="submit">POST</button>
+        </div>
+    </form>
+    <form method="POST" onsubmit="getSubTopicByGrade(event)"  class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">15. Sub Topic by Grade</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label>http://localhost:3001/api/subtopicgrade</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-red-700">POST</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+            </div>
+        </div>
+        <table class="w-100 border m-1">
+            <thead class="text-center uppercase bg-black text-white">
+                <tr class="border-b">
+                    <th class="p-1 border-r border-white">Label</th>
+                    <th class="p-1 border-r border-white">Value</th>
+                    <th class="p-1 border-r border-white">Variable Name</th>
+                    <th class="p-1 border-r border-white">Mandatory</th>
+                    <th class="p-1 border-r border-white">Table</th>
+                    <th class="p-1 border-r border-white">Note</th>
+                    <th class="p-1 border-r border-black">Sample</th>
+                </tr>
+            </thead>
+            <tbody class=" text-center">
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">Grade</td>
+                    <td class="p-1 border-r"><input id="subtopic-grade" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">grade</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">subtopics</td>
+                    <td class="p-1 border-r max-w-40 break-words">A grade can have multiple sub topics {kindergarden, 1 to 8}</td>
+                    <td class="p-1 border-r">1</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-red-400 " type="submit">POST</button>
+        </div>
+    </form>
+
+    <form method="POST" onsubmit="getQuestionById(event)"  class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">16. Question by Id</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label>http://localhost:3001/api/questionid</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-red-700">POST</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+            </div>
+        </div>
+        <table class="w-100 border m-1">
+            <thead class="text-center uppercase bg-black text-white">
+                <tr class="border-b">
+                    <th class="p-1 border-r border-white">Label</th>
+                    <th class="p-1 border-r border-white">Value</th>
+                    <th class="p-1 border-r border-white">Variable Name</th>
+                    <th class="p-1 border-r border-white">Mandatory</th>
+                    <th class="p-1 border-r border-white">Table</th>
+                    <th class="p-1 border-r border-white">Note</th>
+                    <th class="p-1 border-r border-black">Sample</th>
+                </tr>
+            </thead>
+            <tbody class=" text-center">
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">Id</td>
+                    <td class="p-1 border-r"><input id="question-id" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">id</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">questions</td>
+                    <td class="p-1 border-r max-w-40 break-words">question id is unique</td>
+                    <td class="p-1 border-r">2</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-red-400 " type="submit">POST</button>
+        </div>
+    </form>
+    <form method="POST" onsubmit="getQuestionByTitle(event)"  class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">17. Question by title</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label>http://localhost:3001/api/questiontitle</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-red-700">POST</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+            </div>
+        </div>
+        <table class="w-100 border m-1">
+            <thead class="text-center uppercase bg-black text-white">
+                <tr class="border-b">
+                    <th class="p-1 border-r border-white">Label</th>
+                    <th class="p-1 border-r border-white">Value</th>
+                    <th class="p-1 border-r border-white">Variable Name</th>
+                    <th class="p-1 border-r border-white">Mandatory</th>
+                    <th class="p-1 border-r border-white">Table</th>
+                    <th class="p-1 border-r border-white">Note</th>
+                    <th class="p-1 border-r border-black">Sample</th>
+                </tr>
+            </thead>
+            <tbody class=" text-center">
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">Title</td>
+                    <td class="p-1 border-r"><input id="question-title" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">title</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">questions</td>
+                    <td class="p-1 border-r max-w-40 break-words">title is not unique</td>
+                    <td class="p-1 border-r">normal</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-red-400 " type="submit">POST</button>
+        </div>
+    </form>
+
+    <form method="POST" onsubmit="getReportById(event)"  class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">18. Report by User Id</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label>http://localhost:3001/api/reportid</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-red-700">POST</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+            </div>
+        </div>
+        <table class="w-100 border m-1">
+            <thead class="text-center uppercase bg-black text-white">
+                <tr class="border-b">
+                    <th class="p-1 border-r border-white">Label</th>
+                    <th class="p-1 border-r border-white">Value</th>
+                    <th class="p-1 border-r border-white">Variable Name</th>
+                    <th class="p-1 border-r border-white">Mandatory</th>
+                    <th class="p-1 border-r border-white">Table</th>
+                    <th class="p-1 border-r border-white">Note</th>
+                    <th class="p-1 border-r border-black">Sample</th>
+                </tr>
+            </thead>
+            <tbody class=" text-center">
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">User Id</td>
+                    <td class="p-1 border-r"><input id="report-id" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">user_id</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">reports</td>
+                    <td class="p-1 border-r max-w-40 break-words">user id is unique</td>
+                    <td class="p-1 border-r">2</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-red-400 " type="submit">POST</button>
+        </div>
+    </form>
+    <form method="POST" onsubmit="getTopicReportById(event)"  class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">19. Topic Report by User Id</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label>http://localhost:3001/api/topicreport/userid</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-red-700">POST</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+            </div>
+        </div>
+        <table class="w-100 border m-1">
+            <thead class="text-center uppercase bg-black text-white">
+                <tr class="border-b">
+                    <th class="p-1 border-r border-white">Label</th>
+                    <th class="p-1 border-r border-white">Value</th>
+                    <th class="p-1 border-r border-white">Variable Name</th>
+                    <th class="p-1 border-r border-white">Mandatory</th>
+                    <th class="p-1 border-r border-white">Table</th>
+                    <th class="p-1 border-r border-white">Note</th>
+                    <th class="p-1 border-r border-black">Sample</th>
+                </tr>
+            </thead>
+            <tbody class=" text-center">
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">Id</td>
+                    <td class="p-1 border-r"><input id="topicreport-id" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">user_id</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">topic_reports</td>
+                    <td class="p-1 border-r max-w-40 break-words">user id is unique</td>
+                    <td class="p-1 border-r">2</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-red-400 " type="submit">POST</button>
+        </div>
+    </form>
+    <form method="POST" onsubmit="getTopicReportByIdAndTopic(event)"  class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">20. Topic Report by User Id & Topic Id</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label>http://localhost:3001/api/report/userid/topicid</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-red-700">POST</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+            </div>
+        </div>
+        <table class="w-100 border m-1">
+            <thead class="text-center uppercase bg-black text-white">
+                <tr class="border-b">
+                    <th class="p-1 border-r border-white">Label</th>
+                    <th class="p-1 border-r border-white">Value</th>
+                    <th class="p-1 border-r border-white">Variable Name</th>
+                    <th class="p-1 border-r border-white">Mandatory</th>
+                    <th class="p-1 border-r border-white">Table</th>
+                    <th class="p-1 border-r border-white">Note</th>
+                    <th class="p-1 border-r border-black">Sample</th>
+                </tr>
+            </thead>
+            <tbody class=" text-center">
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">User Id</td>
+                    <td class="p-1 border-r"><input id="report-userid" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">user_id</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">topic_reports</td>
+                    <td class="p-1 border-r max-w-40 break-words">user id is unique</td>
+                    <td class="p-1 border-r">2</td>
+                </tr>
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">Topic Id</td>
+                    <td class="p-1 border-r"><input id="report-topicid" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">topic_id</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">topic_reports</td>
+                    <td class="p-1 border-r">topic id is unique</td>
+                    <td class="p-1 border-r">2</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-red-400 " type="submit">POST</button>
+        </div>
+    </form>
+
+    <form method="POST" onsubmit="addUser(event)" class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">21. Add User</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label>http://localhost:3001/api/adduser</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-red-700">POST</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+            </div>
+        </div>
+        <table class="w-100 border m-1">
+            <thead class="text-center uppercase bg-black text-white">
+                <tr class="border-b">
+                    <th class="p-1 border-r border-white">Label</th>
+                    <th class="p-1 border-r border-white">Value</th>
+                    <th class="p-1 border-r border-white">Variable Name</th>
+                    <th class="p-1 border-r border-white">Mandatory</th>
+                    <th class="p-1 border-r border-white">Table</th>
+                    <th class="p-1 border-r border-white">Note</th>
+                    <th class="p-1 border-r border-black">Sample</th>
+                </tr>
+            </thead>
+            <tbody class=" text-center">
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">name</td>
+                    <td class="p-1 border-r"><input id="adduser-name" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">name</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">customers</td>
+                    <td class="p-1 border-r max-w-40 break-words">Name may not be unique</td>
+                    <td class="p-1 border-r">user</td>
+                </tr>
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">age</td>
+                    <td class="p-1 border-r"><input id="adduser-age" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">age</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">customers</td>
+                    <td class="p-1 border-r max-w-40 break-words">Age between 0-100</td>
+                    <td class="p-1 border-r">7</td>
+                </tr>
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">Email</td>
+                    <td class="p-1 border-r"><input id="adduser-email" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">email</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">customers</td>
+                    <td class="p-1 border-r max-w-40 break-words">Email must be unique</td>
+                    <td class="p-1 border-r">user@skyraan.com</td>
+                </tr>
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">Password</td>
+                    <td class="p-1 border-r"><input id="adduser-password" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">password</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">customers</td>
+                    <td class="p-1 border-r max-w-40 break-words">Pasword must contain atleast 1 Uppercase, 1 Lowercase, 1 Number, 1 Special Char and of length 8.</td>
+                    <td class="p-1 border-r">User@123</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-red-400 " type="submit">POST</button>
+        </div>
+    </form>
+    <form method="PUT" onsubmit="editUser(event)" class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">22. Edit User</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label>http://localhost:3001/api/edituser</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-yellow-500">PUT</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+            </div>
+        </div>
+        <table class="w-100 border m-1">
+            <thead class="text-center uppercase bg-black text-white">
+                <tr class="border-b">
+                    <th class="p-1 border-r border-white">Label</th>
+                    <th class="p-1 border-r border-white">Value</th>
+                    <th class="p-1 border-r border-white">Variable Name</th>
+                    <th class="p-1 border-r border-white">Mandatory</th>
+                    <th class="p-1 border-r border-white">Table</th>
+                    <th class="p-1 border-r border-white">Note</th>
+                    <th class="p-1 border-r border-black">Sample</th>
+                </tr>
+            </thead>
+            <tbody class=" text-center">
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">User Id</td>
+                    <td class="p-1 border-r"><input id="edituser-id" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">id</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">customers</td>
+                    <td class="p-1 border-r max-w-40 break-words">Id is unique for each user</td>
+                    <td class="p-1 border-r">2</td>
+                </tr>
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">name</td>
+                    <td class="p-1 border-r"><input id="edituser-name" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">name</td>
+                    <td class="p-1 border-r">NO</td>
+                    <td class="p-1 border-r">customers</td>
+                    <td class="p-1 border-r max-w-40 break-words">Name may not be unique</td>
+                    <td class="p-1 border-r">user</td>
+                </tr>
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">age</td>
+                    <td class="p-1 border-r"><input id="edituser-age" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">age</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">customers</td>
+                    <td class="p-1 border-r max-w-40 break-words">Age between 0-100</td>
+                    <td class="p-1 border-r">7</td>
+                </tr>
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">Email</td>
+                    <td class="p-1 border-r"><input id="edituser-email" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">email</td>
+                    <td class="p-1 border-r">NO</td>
+                    <td class="p-1 border-r">customers</td>
+                    <td class="p-1 border-r max-w-40 break-words">Email must be unique</td>
+                    <td class="p-1 border-r">user@skyraan.com</td>
+                </tr>
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">Password</td>
+                    <td class="p-1 border-r"><input id="edituser-password" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">password</td>
+                    <td class="p-1 border-r">NO</td>
+                    <td class="p-1 border-r">customers</td>
+                    <td class="p-1 border-r max-w-40 break-words">Pasword must contain atleast 1 Uppercase, 1 Lowercase, 1 Number, 1 Special Char and of length 8.</td>
+                    <td class="p-1 border-r">User@123</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-yellow-400 " type="submit">PUT</button>
+        </div>
+    </form>
+    <form method="DELETE" onsubmit="deleteUser(event)" class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">23. Delete User</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label>http://localhost:3001/api/deleteuser</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-blue-700">DELETE</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+            </div>
+        </div>
+        <table class="w-100 border m-1">
+            <thead class="text-center uppercase bg-black text-white">
+                <tr class="border-b">
+                    <th class="p-1 border-r border-white">Label</th>
+                    <th class="p-1 border-r border-white">Value</th>
+                    <th class="p-1 border-r border-white">Variable Name</th>
+                    <th class="p-1 border-r border-white">Mandatory</th>
+                    <th class="p-1 border-r border-white">Table</th>
+                    <th class="p-1 border-r border-white">Note</th>
+                    <th class="p-1 border-r border-black">Sample</th>
+                </tr>
+            </thead>
+            <tbody class=" text-center">
+                <tr class="border-b">
+                    <td class="p-1 border-r border-l">User Id</td>
+                    <td class="p-1 border-r"><input id="delete-user" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">id</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">customers</td>
+                    <td class="p-1 border-r max-w-40 break-words">Delete the User</td>
+                    <td class="p-1 border-r">21</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-blue-400 " type="submit">DELETE</button>
+        </div>
+    </form>
+
+    <form method="DELETE" onsubmit="resetreport(event)" class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">24. Reset Report</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label>http://localhost:3001/api/resetreport/label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-blue-700">DELETE</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+            </div>
+        </div>
+        <table class="w-100 border m-1">
+            <thead class="text-center uppercase bg-black text-white">
+                <tr class="border-b">
+                    <th class="p-1 border-r border-white">Label</th>
+                    <th class="p-1 border-r border-white">Value</th>
+                    <th class="p-1 border-r border-white">Variable Name</th>
+                    <th class="p-1 border-r border-white">Mandatory</th>
+                    <th class="p-1 border-r border-white">Table</th>
+                    <th class="p-1 border-r border-white">Note</th>
+                    <th class="p-1 border-r border-black">Sample</th>
+                </tr>
+            </thead>
+            <tbody class=" text-center">
+                <tr class="border-b">
+                    <td class="p-1 border-l border-r">User Id</td>
+                    <td class="p-1 border-r"><input id="reset-report" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">id</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">reports and topic_reports</td>
+                    <td class="p-1 border-r max-w-40 break-words">Delete Overall report and individual topic reports also</td>
+                    <td class="p-1 border-r">21</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-blue-400 " type="submit">DELETE</button>
+        </div>
+    </form>
+
+    <form method="POST" onsubmit="login(event)" class="w-100 flex flex-col h-auto m-2 border border-black">
+        <div class="m-2 w-100">
+            <p class="title text-xl font-bold underline text-green-700">25. Login</p>
+            <div class="mainDiv w-100">
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="url">API URL</label>
+                    <label>http://localhost:3001/api/login</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="method">Method</label>
+                    <label class=" font-semibold text-red-700">POST</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                    <label>application/json</label>
+                </div>
+                <div class="p-1 row w-auto flex">
+                    <label class="w-32 font-semibold" name="mode">API Mode</label>
+                    <label>Development</label>
+                </div>
+            </div>
+        </div>
+        <table class="w-100  m-1">
+            <thead class="text-center uppercase bg-black text-white">
+                <tr class="border-b">
+                    <th class="p-1 border-l border-r border-white">Label</th>
+                    <th class="p-1 border-r border-white">Value</th>
+                    <th class="p-1 border-r border-white">Variable Name</th>
+                    <th class="p-1 border-r border-white">Mandatory</th>
+                    <th class="p-1 border-r border-white">Table</th>
+                    <th class="p-1 border-r border-white">Note</th>
+                    <th class="p-1 border-r border-black">Sample</th>
+                </tr>
+            </thead>
+            <tbody class=" text-center">
+                <tr class="border-b">
+                    <td class="p-1 border-l border-r">Email</td>
+                    <td class="p-1 border-r"><input id="login-email" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">email</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">customers</td>
+                    <td class="p-1 border-r max-w-40 break-words">Email id unique for each user</td>
+                    <td class="p-1 border-r">user2@gmail.com</td>
+                </tr>
+                <tr class="border-b">
+                    <td class="p-1 border-l border-r">Password</td>
+                    <td class="p-1 border-r"><input id="login-password" class="border p-1" type="text" /></td>
+                    <td class="p-1 border-r">passwpord</td>
+                    <td class="p-1 border-r">YES</td>
+                    <td class="p-1 border-r">customers</td>
+                    <td class="p-1 border-r max-w-40 break-words">Password mush be correct</td>
+                    <td class="p-1 border-r">User2@123</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="w-100 flex justify-center">
+            <button class="p-2 py-1 m-1 border border-black w-fit bg-red-400 " type="submit">POST</button>
+        </div>
+    </form>
+
+
+</body>
+</html>
+
+<!-- <form method="POST" onsubmit="" class="w-100 flex flex-col h-auto m-2 border border-black">
+    <div class="m-2 w-100">
+        <p class="title text-xl font-bold underline text-green-700">1.</p>
+        <div class="mainDiv w-100">
+            <div class="p-1 row w-auto flex">
+                <label class="w-32 font-semibold" name="url">API URL</label>
+                <label></label>
+            </div>
+            <div class="p-1 row w-auto flex">
+                <label class="w-32 font-semibold" name="method">Method</label>
+                <label class=" font-semibold text-red-700">POST</label>
+            </div>
+            <div class="p-1 row w-auto flex">
+                <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                <label></label>
+            </div>
+            <div class="p-1 row w-auto flex">
+                <label class="w-32 font-semibold" name="mode">API Mode</label>
+                <label>Development</label>
+            </div>
+        </div>
+    </div>
+    <table class="w-100 border m-1">
+        <thead class="text-center uppercase bg-black text-white">
+            <tr class="border-b">
+                <th class="p-1 border-r border-white">Label</th>
+                <th class="p-1 border-r border-white">Value</th>
+                <th class="p-1 border-r border-white">Variable Name</th>
+                <th class="p-1 border-r border-white">Mandatory</th>
+                <th class="p-1 border-r border-white">Table</th>
+                <th class="p-1 border-r border-white">Note</th>
+                <th class="p-1 border-r border-black">Sample</th>
+            </tr>
+        </thead>
+        <tbody class=" text-center">
+            <tr class="border-b">
+                <td class="p-1 border-r"></td>
+                <td class="p-1 border-r"><input class="border p-1" type="text" /></td>
+                <td class="p-1 border-r"></td>
+                <td class="p-1 border-r"></td>
+                <td class="p-1 border-r"></td>
+                <td class="p-1 border-r max-w-40 break-words"></td>
+                <td class="p-1"></td>
+            </tr>
+            <tr>
+                <td class="p-1 border-r"></td>
+                <td class="p-1 border-r"><input class="border p-1" type="text" /></td>
+                <td class="p-1 border-r"></td>
+                <td class="p-1 border-r"></td>
+                <td class="p-1 border-r"></td>
+                <td class="p-1 border-r max-w-40 break-words"></td>
+                <td class="p-1"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="w-100 flex justify-center">
+        <button class="p-2 py-1 m-1 border border-black w-fit bg-green-400 " type="submit">Submit</button>
+    </div>
+</form>
+
+<form method="GET"  class="w-100 flex flex-col h-auto m-2 border border-black">
+    <div class="m-2 w-100">
+        <p class="title text-xl font-bold underline text-green-700">1.</p>
+        <div class="mainDiv w-100">
+            <div class="p-1 row w-auto flex">
+                <label class="w-32 font-semibold" name="url">API URL</label>
+                <label>http://localhost:3001/api/</label>
+            </div>
+            <div class="p-1 row w-auto flex">
+                <label class="w-32 font-semibold" name="method">Method</label>
+                <label class=" font-semibold text-green-700">GET</label>
+            </div>
+            <div class="p-1 row w-auto flex">
+                <label class="w-32 font-semibold" name="content-type">Content-type</label>
+                <label>application/json</label>
+            </div>
+            <div class="p-1 row w-auto flex">
+                <label class="w-32 font-semibold" name="mode">API Mode</label>
+                <label>Development</label>
+            </div>
+            <div class="p-1 row w-auto flex">
+                <label class="w-32 font-semibold" name="description">Description</label>
+                <label></label>
+            </div>
+        </div>
+    </div>
+    <div class="w-100 flex justify-center">
+        <button class="p-2 py-1 m-1 border border-black w-fit bg-green-400 " type="submit">GET</button>
+    </div>
+</form> -->
